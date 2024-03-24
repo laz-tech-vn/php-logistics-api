@@ -1,0 +1,10 @@
+#php 
+##### Composer
+composer.phar
+/vendor/
+.env
+composer.lock
+#editor
+.idea/
+.vscode/
+*.sublime-project
