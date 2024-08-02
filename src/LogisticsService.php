@@ -61,6 +61,18 @@ class LogisticsService
     }
 
     /**
+     * print AWB v2
+     * @param $params
+     * @return 
+     * @document https://open.lazada.com/apps/doc/api?path=/logistics/epis/v2/packages/awb
+     */
+    public function printAwbV2($params)
+    {
+        $endpoint = '/logistics/epis/v2/packages/awb';
+        return $this->client->sendRequest($endpoint, $params, 'GET');
+    }
+
+    /**
      * cancel package
      * @param $params
      * @return mixed
@@ -93,6 +105,18 @@ class LogisticsService
     public function estimateShippingFee($params)
     {
         $endpoint = '/logistics/epis/estimate_shipping_fee';
+        return $this->client->sendRequest($endpoint, $params, 'GET');
+    }
+
+    /**
+     * Get Shipping fee
+     * @param $params
+     * @return mixed
+     * @document https://open.lazada.com/apps/doc/api?path=%2Flogistics%2Fepis%2Fget_shipping_fee
+     */
+    public function getShippingFee($params)
+    {
+        $endpoint = '/logistics/epis/get_shipping_fee';
         return $this->client->sendRequest($endpoint, $params, 'GET');
     }
 

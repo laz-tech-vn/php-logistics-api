@@ -85,6 +85,8 @@ $response = $logistics->getDeliveryOptions($parameters);
 
 ### [4.Get Estimate Shipping Fee](https://open.lazada.com/apps/doc/api?path=%2Flogistics%2Fepis%2Festimate_shipping_fee)
 
+API get estimate shipping fee is used to get the estimated shipping fee for a package
+
 ```php
 $parameters = [
     "externalSellerId" => "your_seller_id(partner input)",
@@ -156,6 +158,29 @@ $parameters = [
 $response = $logistics->createPackage($parameters);
 ```
 
+### [5.1 Package Consign](https://open.lazada.com/apps/doc/api?path=%2Flogistics%2Fepis%2Fpackages%2Fconsign)
+
+API Package Consign is used to consign a package
+
+```php
+    $parameters = [
+        "dangerousGood"= "false",
+        // get full parameters from https://open.lazada.com/apps/doc/api?path=%2Flogistics%2Fepis%2Fpackages%2Fconsign
+    ]
+    $response = $logistics->consignPackage($parameters);
+```
+
+### [5.2 Package Ready To Ship](https://open.lazada.com/apps/doc/api?path=%2Flogistics%2Fepis%2Fpackages%2Frts)
+
+API Package Ready To Ship is used to notify lazada that the package consigned is ready to ship
+
+```php
+    $parameters = [
+        "trackingNumber"= "tracking_number pack",
+    ]
+    $response = $logistics->rtsPackage($parameters);
+```
+
 ### [6.Print Airway Bill](https://open.lazada.com/apps/doc/api?path=%2Flogistics%2Fepis%2Fpackages%2Fawb)
 
 ```php
@@ -167,6 +192,19 @@ $parameters = [
 $response = $logistics->printAwb($parameters);
 ```
 
+### [6.1 Print Airway Bill v2](https://open.lazada.com/apps/doc/api?path=/logistics/epis/v2/packages/awb)
+
+print awb v2 support multiple package code and tracking number
+
+```php
+$parameters = [
+    "packageCodes" => "your_package_code(partner input)",
+    "trackingNumbers" => "your_tracking_number(partner input)",
+    "type"=>"pdf",
+];
+$response = $logistics->printAwbV2($parameters);
+```
+
 ### [7.Package Cancel](https://open.lazada.com/apps/doc/api?path=%2Flogistics%2Fepis%2Fpackages%2Fcancel)
 
 ```php
@@ -176,6 +214,19 @@ $parameters = [
 ];
 
 $response = $logistics->cancelPackage($parameters);
+```
+
+### [8.Get Shipping Fee](https://open.lazada.com/apps/doc/api?path=%2Flogistics%2Fepis%2Fget_shipping_fee)
+
+get shipping fee is used to get shipping fee an estimate and the actual for the package
+
+```php
+$parameters = [
+    "externalSellerId" => "your_seller_id(partner input)",
+    "platformName"= "your_platform_name(lazada provided)",
+    "trackingNumber"= "your_tracking_number(partner input)",
+];
+$response = $logistics->getShippingFee($parameters);
 ```
 
 ## Error List
